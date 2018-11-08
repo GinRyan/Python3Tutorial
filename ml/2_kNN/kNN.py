@@ -14,8 +14,8 @@ def classify0(inX: array, dataSet: array, labels: array, k: int):
     dataSetSize: int = dataSet.shape[0]  # 确定数据集大小
     tileInputX: array = tile(inX, (dataSetSize, 1))  # 延展数据集, 将输入向量inX重复n行1列，n等于数据集大小
     diffMat: array = tileInputX - dataSet  # 求坐标差
-    sqDiffMat: array = diffMat ** 2  #坐标差的每个指标值的平方
-    sqDistances = sqDiffMat.sum(axis=1) #然后求和
+    sqDiffMat: array = diffMat ** 2  # 坐标差的每个指标值的平方
+    sqDistances = sqDiffMat.sum(axis=1)  # 然后求和
 
     distances = sqDistances ** 0.5  # 开方
     sortedDistIndices = distances.argsort()
@@ -28,4 +28,20 @@ def classify0(inX: array, dataSet: array, labels: array, k: int):
     )
 
     return sortedClassCount[0][0]
+
+
+def file2matrix(filename):
+    fr = open(filename, "r")
+    arrayOLines = fr.readlines()
+    numberOfLines = len(arrayOLines)
+    returnMat = np.zeros((numberOfLines, 3))
+    classLabelVector = []
+    index = 0
+    for line in arrayOLines:
+        line = line.strip()
+        listFromLine = line.split("\t")
+        returnMat[index] = listFromLine[0:3]
+        classLabelVector.append(int(listFromLine[-1]))
+        index += 1
+    return returnMat, classLabelVector
 
