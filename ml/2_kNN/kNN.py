@@ -31,11 +31,11 @@ def classify0(inX: array, dataSet: array, labels: array, k: int):
 
 
 def file2matrix(filename):
-    fr = open(filename, "r")
-    arrayOLines = fr.readlines()
-    numberOfLines = len(arrayOLines)
-    returnMat = np.zeros((numberOfLines, 3))
-    classLabelVector = []
+    fr = open(filename, "r")#打开文件 
+    arrayOLines = fr.readlines()#读入文件所有行
+    numberOfLines = len(arrayOLines)#识别行数
+    returnMat = np.zeros((numberOfLines, 3))#根据文件的行数和3列数构建一个全零矩阵
+    classLabelVector = []# 记录标签列向量(下面通过获取每行最后一列数作为标签列向量)
     index = 0
     for line in arrayOLines:
         line = line.strip()
@@ -44,4 +44,8 @@ def file2matrix(filename):
         classLabelVector.append(int(listFromLine[-1]))
         index += 1
     return returnMat, classLabelVector
+
+#import matplotlib.pyplot as plt
+
+
 
