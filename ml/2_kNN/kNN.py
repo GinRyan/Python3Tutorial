@@ -57,6 +57,7 @@ def file2matrix(filename):
         returnMat[index] = listFromLine[0:3]
         #类别标签向量，每一次循环都把listFromLine切分的最后一个值转换成整型值，追加到classLabelVector
         #按照上面举得例子，是把3追加到classLabelVector后面
+        print(returnMat)
         classLabelVector.append(int(listFromLine[-1]))
         #递增索引，用于读取下一行,直到最后行数值numberOfLines
         index += 1
