@@ -66,5 +66,16 @@ def file2matrix(filename):
 
 #import matplotlib.pyplot as plt
 
-
+#归一化
+def autoNorm(dataSet):
+    minVals = dataSet.min(0)
+    maxVals = dataSet.max(0)
+    ranges= maxVals - minVals
+    normDataset = zeros(shape(dataSet))
+    #行数
+    m = dataSet.shape[0]
+    normDataset = dataSet - tile(minVals,(m,1))
+    #让特征数相除
+    normDataset = normDataset / tile(ranges, (m,1))
+    return normDataset,ranges,minVals
 
