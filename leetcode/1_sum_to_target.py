@@ -18,11 +18,12 @@ class Solution:
         :rtype: List[int]
         """
         cache = {}
-        for index,num in enumerate(nums):
+        index = 0
+        for num in nums:
             diff = target - num
             if diff in cache:
                 return [cache[diff],index]
             cache[num] = index
-
+            index += 1
 
 print(Solution().twoSum([7, 2, 11, 15, 4], 6))

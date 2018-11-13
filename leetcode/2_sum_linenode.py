@@ -1,28 +1,28 @@
+"""给定一个 32 位有符号整数，将整数中的数字进行反转。
+
+示例 1:
+
+输入: 123
+输出: 321
+
+ 示例 2:
+
+输入: -123
+输出: -321
+
+示例 3:
+
+输入: 120
+输出: 21
+
+注意:
+
+假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−231,  231 − 1]。根据这个假设，如果反转后的整数溢出，则返回 0。
 """
-给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。
-
-你可以假设除了数字 0 之外，这两个数字都不会以零开头。
-
-示例：
-
-输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
-输出：7 -> 0 -> 8
-原因：342 + 465 = 807
-"""
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        #值
-        self.val = x
-        #下一个节点
-        self.next = None
-
-####
 class Solution:
-    def addTwoNumbers(self, l1, l2):
+    def reverse(self, x):
         """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
+        :type x: int
+        :rtype: int
         """
         
