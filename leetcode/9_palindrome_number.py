@@ -1,4 +1,4 @@
-'''
+"""
 判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
 
 示例 1:
@@ -21,11 +21,29 @@
 进阶:
 
 你能不将整数转为字符串来解决这个问题吗？
-'''
+"""
+
+# 0 1 2
+# 0 1 0
+# 0 1 2 3
+# 0 1 1 0
 class Solution:
     def isPalindrome(self, x):
         """
         :type x: int
         :rtype: bool
         """
-        
+        if x < 0:
+            return False
+        xstr = str(x)
+        xlen = len(xstr)
+        midposition = xlen // 2
+        index = 0
+        while index < midposition:
+            eq = xstr[index] == xstr[xlen - index - 1]
+            if not eq:
+                return False
+            index += 1
+        return True
+
+print(Solution().isPalindrome(13455431))
