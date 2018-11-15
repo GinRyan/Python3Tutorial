@@ -17,7 +17,8 @@
 
 注意:
 
-假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−2^31,  2^31 − 1]。根据这个假设，如果反转后的整数溢出，则返回 0。
+假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−2^31,  2^31 − 1]。
+根据这个假设，如果反转后的整数溢出，则返回 0。
 """
 
 
@@ -27,10 +28,22 @@ class Solution:
         :type x: int
         :rtype: int
         """
-        # 位映射
-        magicNum = 10
-        bitDict = {}
-        
+        # 记住符号位
+        sign = 1
+        if x != 0:
+            sign = x / abs(x)
+            # 去掉符号
+            x = abs(x)
+        # 数字位
+        reversedNum = 0
+        while x > 0:
+            tail = x % 10
+            reversedNum = reversedNum * 10 + tail
+            x //= 10
+            if reversedNum > 2 ** 31 - 1:
+                return 0
 
+        ret = sign * reversedNum
+        return int(ret)
 
-print(Solution().reverse(153))
+print(Solution().reverse(-2855524))
