@@ -64,15 +64,16 @@ class Solution:
 
         while index < romansCount:
             sign = 1
-            
+            print("%s %s" % (s[index], s[index - 1]))
             if romanIntMap[s[index]] > romanIntMap[s[index - 1]]:
                 sign = -1
-
-            romVal += sign * romanIntMap[s[index -1 ]]
-            print("Index: %s -> Char: %d" % (s[index -1], romanIntMap[s[index -1]]))
+            # 因为比对的是index ，但是累加的却是index - 1，因此第index位置没有加进来
+            romVal += sign * romanIntMap[s[index - 1]]
+            print("Index: %s -> Char: %d" % (s[index - 1], romanIntMap[s[index - 1]]))
             index += 1
- 
-        romVal += romanIntMap[s[romansCount-1]]
+        # 而最后一位，只需要加就可以了，
+        # 因为最后一位无论是IV顺序还是VI顺序，改变符号的都是高位，低位只需要直接加即可。
+        romVal += romanIntMap[s[romansCount - 1]]
         return romVal
 
 
