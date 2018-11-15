@@ -33,7 +33,7 @@ class Solution:
         :type x: int
         :rtype: bool
         """
-        if x < 0:
+        if x < 0 or (x % 10 and x != 0):
             return False
         xstr = str(x)
         xlen = len(xstr)
@@ -45,5 +45,6 @@ class Solution:
                 return False
             index += 1
         return True
+
 
 print(Solution().isPalindrome(13455431))
