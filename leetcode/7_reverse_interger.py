@@ -40,10 +40,13 @@ class Solution:
             tail = x % 10
             reversedNum = reversedNum * 10 + tail
             x //= 10
-            if reversedNum > 2 ** 31 - 1:
-                return 0
+           
 
         ret = sign * reversedNum
+        if reversedNum > 2 ** 31 - 1:
+                return 0
+        elif reversedNum < -2**31:
+                return 0
         return int(ret)
 
 print(Solution().reverse(-2855524))
