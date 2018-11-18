@@ -21,29 +21,47 @@ class ListNode:
 
 
 class Solution:
-
     def mergeTwoLists(self, l1, l2):
         """
         :type l1: ListNode
         :type l2: ListNode
         :rtype: ListNode
         """
-        retLink = None
-        retCursor = None
         l1Cursor = l1
         l2Cursor = l2
-        while True:
-            if l1Cursor.val < l2Cursor.val:#当前节点小值为胜，当前节点前移
-                if retLint == None:#当结果节点为空的时候，设定当前胜利节点为结果节点，结果节点前移
-                    retLint = l1Cursor
-                    retCursor = retLint
-                else :
-                    retCursor.next = l1Cursor
-                l1Cursor = l1Cursor.next
-            elif l1Cursor.val > l2Cursor.val:
-                pass
-            break
-        return retLink
+        if l1Cursor == None and l2Cursor == None:
+            return None
+
+        if l1Cursor == None:
+            return l2Cursor
+        if l2Cursor == None:
+            return l1Cursor
+        retNode = None
+        listNode = []
+        while l1Cursor != None:
+            listNode.append(l1Cursor)
+            l1Cursor = l1Cursor.next
+        while l2Cursor != None:
+            listNode.append(l2Cursor)
+            l2Cursor = l2Cursor.next
+
+        listNode = sorted(listNode, key=lambda listnode: listnode.val)
+        print(listNode)
+
+        retNode = listNode[0]
+        index = 1
+        retNodeCursor = retNode
+        while index < len(listNode):
+            retNodeCursor.next = listNode[index]
+            retNodeCursor = retNodeCursor.next
+            index += 1
+        return retNode
+
+
+def playNode(nodes):
+    while nodes != None:
+        print(nodes.val)
+        nodes = nodes.next
 
 
 l1_node1 = ListNode(1)
@@ -60,9 +78,9 @@ l2_node3 = ListNode(16)
 l2_node1.next = l2_node2
 l2_node2.next = l2_node3
 
+# playNode(l1_node1)
+# playNode(l2_node1)
+
 sol = Solution()
 retnode = sol.mergeTwoLists(l1_node1, l2_node1)
-print(retnode)
-while retnode != None:
-    print(retnode.val)
-    retnode = retnode.next
+playNode(retnode)
