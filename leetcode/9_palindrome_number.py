@@ -33,7 +33,7 @@ class Solution:
         :type x: int
         :rtype: bool
         """
-        if x < 0 or (x % 10 and x != 0):
+        if x < 0 or (x % 10 == 0 and x != 0):
             return False
         xstr = str(x)
         xlen = len(xstr)
