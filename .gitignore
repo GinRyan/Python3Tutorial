@@ -106,3 +106,4 @@ venv.bak/
 .vscode
 __pycache__
 *.pyc
+/__pycache__
