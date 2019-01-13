@@ -72,13 +72,14 @@ class Solution:
             nump += 1
         print(tempCache)
         return len(tempCache) == 0
-
-print(Solution().isValid(""))#true
-print(Solution().isValid("]"))#false
-print(Solution().isValid("()"))#true
-print(Solution().isValid("()[]{}"))#true
-print(Solution().isValid("([)]"))#false
-print(Solution().isValid("{[]}"))#true
-print(Solution().isValid("(]"))#false
+        
 print(Solution().isValid("{}[]{[()]()}"))#true
-print(Solution().isValid("{}[]{[(})]()}"))#false
+# print(Solution().isValid(""))#true
+# print(Solution().isValid("]"))#false
+# print(Solution().isValid("()"))#true
+# print(Solution().isValid("()[]{}"))#true
+# print(Solution().isValid("([)]"))#false
+# print(Solution().isValid("{[]}"))#true
+# print(Solution().isValid("(]"))#false
+# print(Solution().isValid("{}[]{[()]()}"))#true
+# print(Solution().isValid("{}[]{[(})]()}"))#false
